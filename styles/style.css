@@ -1,0 +1,619 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #6c8cff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+}
+
+nav a {
+    color: #444;
+    text-decoration: none;
+    font-size: 17px;
+    transition: color 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #6c8cff;
+}
+
+main {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.welcome {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #ececec;
+}
+
+.welcome h1 {
+    font-size: 28px;
+    margin-bottom: 14px;
+    color: #111;
+}
+
+.welcome p {
+    color: #555;
+    font-size: 16px;
+    max-width: 700px;
+}
+
+.btn-welcome {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 12px 28px;
+  background: #6c8cff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-welcome:hover {
+  background: #5878f0;
+  transform: translateY(-1px);
+}
+
+.btn-welcome:active {
+  transform: translateY(0);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.game-card {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    overflow: hidden; 
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    border-color: #dbe2ff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.game-cover {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #ececec;
+}
+
+.game-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.game-card:hover .game-cover img {
+    transform: scale(1.06);
+}
+
+.game-cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent 45%);
+    pointer-events: none;
+}
+
+.game-body {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.game-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+}
+
+.game-card p {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.5;
+}
+
+footer {
+    background: #111;
+    color: #cfcfcf;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 20px 32px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+}
+
+.footer-col .logo {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.footer-about {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 320px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col ul a {
+    color: #b5b5b5;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-col ul a:hover {
+    color: #6c8cff;
+}
+
+.footer-bottom {
+    border-top: 1px solid #222;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #888;
+    font-size: 13px;
+    text-align: center;
+}
+
+.search-block {
+    margin-bottom: 32px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 480px;
+    padding: 12px 18px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #222;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-input:focus {
+    border-color: #6c8cff;
+    box-shadow: 0 0 0 3px rgba(108, 140, 255, 0.15);
+}
+
+.auth-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    padding: 40px 36px;
+    border-radius: 12px;
+    border: 1px solid #ececec;
+}
+
+.auth-card h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group input {
+    padding: 11px 14px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group input:focus {
+    border-color: #6c8cff;
+    box-shadow: 0 0 0 3px rgba(108, 140, 255, 0.15);
+}
+
+.btn-submit {
+    margin-top: 6px;
+    padding: 12px 24px;
+    background: #6c8cff;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: #5878f0;
+    transform: translateY(-1px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.auth-switch {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-switch a {
+    color: #6c8cff;
+    text-decoration: none;
+}
+
+.form-group input.input-error {
+    border-color: #e35b5b;
+    box-shadow: 0 0 0 3px rgba(227, 91, 91, 0.12);
+}
+
+.form-group input.input-error:focus {
+    border-color: #e35b5b;
+    box-shadow: 0 0 0 3px rgba(227, 91, 91, 0.18);
+}
+
+.form-error {
+    display: block;
+    min-height: 8px;
+    font-size: 12.5px;
+    line-height: 1.3;
+    color: #e35b5b;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    header {
+        padding: 16px 24px;
+    }
+    
+    nav ul {
+        gap: 20px;
+    }
+    
+    nav a {
+        font-size: 17px;
+    }
+    
+    main {
+        padding: 32px 20px;
+    }
+    
+    section {
+        margin-bottom: 48px;
+    }
+    
+    .welcome {
+        padding: 32px;
+    }
+    
+    .welcome h1 {
+        font-size: 26px;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .footer-inner {
+        gap: 24px;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 767px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    nav ul {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav a {
+        font-size: 16px;
+    }
+    
+    main {
+        padding: 24px 16px;
+    }
+    
+    section {
+        margin-bottom: 40px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .welcome {
+        padding: 28px 22px;
+    }
+    
+    .welcome h1 {
+        font-size: 22px;
+    }
+    
+    .welcome p {
+        font-size: 15px;
+    }
+    
+    .btn-welcome {
+        margin-top: 20px;
+        padding: 11px 24px;
+        font-size: 14px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .game-body {
+        padding: 12px 14px 16px;
+    }
+    
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        padding: 36px 20px 24px;
+    }
+    
+    .footer-col:first-child {
+        grid-column: 1 / -1;
+    }
+    
+    .footer-about {
+        max-width: 100%;
+    }
+    
+    .footer-bottom {
+        padding: 16px 20px;
+    }
+
+    .auth-card {
+        padding: 32px 24px;
+    }
+
+    .auth-card h1 {
+        font-size: 22px;
+    }
+
+    .auth-card {
+        padding: 32px 24px;
+        max-width: 100%;
+    }
+
+    .auth-card h1 {
+        font-size: 22px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .btn-submit {
+        padding: 11px 20px;
+        font-size: 14px;
+    }
+}
+
+
+@media (min-width: 300px) and (max-width: 400px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 16px;
+    }
+
+    nav ul {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 20px 14px;
+    }
+
+    .welcome {
+        padding: 22px 18px;
+    }
+
+    .welcome h1 {
+        font-size: 20px;
+    }
+
+    .welcome p {
+        font-size: 14px;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px 16px 20px;
+    }
+
+    .footer-col:first-child {
+        grid-column: auto;
+    }
+
+    .auth-card {
+        padding: 26px 18px;
+    }
+
+    .auth-card h1 {
+        font-size: 20px;
+    }
+
+    .auth-subtitle {
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    .auth-card {
+        padding: 26px 16px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .auth-card h1 {
+        font-size: 20px;
+    }
+
+    .form-group input {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .btn-submit {
+        padding: 11px 18px;
+        font-size: 14px;
+    }
+
+    .auth-switch {
+        font-size: 13px;
+        margin-top: 18px;
+    }
+}
