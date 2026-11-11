@@ -1,16 +1,24 @@
-const searchInput = document.getElementById('search');
-const cards = document.querySelectorAll('.game-card');
-const emptyMessage = document.getElementById('search-empty');
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search');
+    
+    // Если поля поиска нет на странице, ничего не делаем
+    if (!searchInput) return;
 
-searchInput.addEventListener('input', () => {
-    const query = searchInput.value.trim().toLowerCase();
-    let visibleCount = 0;
+    const cards = document.querySelectorAll('.game-card');
 
-    cards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const matches = title.includes(query);
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.trim().toLowerCase();
 
-        card.style.display = matches ? '' : 'none';
-        if (matches) visibleCount++;
+        cards.forEach(card => {
+            // Читаем данные из data-search (там название и жанр)
+            const searchData = (card.getAttribute('data-search') || '').toLowerCase();
+            
+            // Если введенный текст есть в строке — показываем, иначе скрываем
+            if (searchData.includes(query)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
     });
 });

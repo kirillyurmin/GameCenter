@@ -1,16 +1,13 @@
 <?php
 require_once 'db.php';
 
-// Запрос 1: Игры, которые мы рекомендуем (берем 4 штуки)
-$stmtRec = $pdo->query("SELECT games.*, genres.name AS genre_name FROM games LEFT JOIN genres ON games.genre_id = genres.id WHERE games.is_recommended = 1 LIMIT 4");
+// Запрос 1: 4 случайные игры, которые мы рекомендуем
+$stmtRec = $pdo->query("SELECT games.*, genres.name AS genre_name FROM games LEFT JOIN genres ON games.genre_id = genres.id WHERE games.is_recommended = 1 ORDER BY RAND() LIMIT 4");
 $recommended = $stmtRec->fetchAll();
 
-// Запрос 2: Популярные игры (берем все остальные)
-$stmtPop = $pdo->query("SELECT games.*, genres.name AS genre_name FROM games LEFT JOIN genres ON games.genre_id = genres.id WHERE games.is_recommended = 0");
-$popularAll = $stmtPop->fetchAll();
-
-// Отрезаем от популярных ровно 4 игры (даже если их больше)
-$popular = array_slice($popularAll, 0, 4);
+// Запрос 2: 4 случайные популярные игры
+$stmtPop = $pdo->query("SELECT games.*, genres.name AS genre_name FROM games LEFT JOIN genres ON games.genre_id = genres.id WHERE games.is_recommended = 0 ORDER BY RAND() LIMIT 4");
+$popular = $stmtPop->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +46,16 @@ $popular = array_slice($popularAll, 0, 4);
             <h2>Мы рекомендуем</h2>
             <div class="games-grid">
                 <?php foreach ($recommended as $game): ?>
-                    <div class="game-card">
+                    <a href="./pages/game.php?id=<?= $game['id'] ?>" class="game-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
                         <div class="game-cover">
-                            <img src="<?= htmlspecialchars($game['image_url']) ?>" alt="<?= htmlspecialchars($game['title']) ?>">
+                            <!-- Выводим картинку через get_image.php -->
+                            <img src="./pages/get_image.php?id=<?= $game['id'] ?>" alt="<?= htmlspecialchars($game['title'] ?? '') ?>">
                         </div>
                         <div class="game-body">
-                            <h3><?= htmlspecialchars($game['title']) ?></h3>
-                            <p><?= htmlspecialchars($game['description']) ?></p>
+                            <h3><?= htmlspecialchars($game['title'] ?? '') ?></h3>
+                            <p><?= htmlspecialchars($game['description'] ?? '') ?></p>
                         </div>
-                    </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
         </section>
@@ -69,15 +67,16 @@ $popular = array_slice($popularAll, 0, 4);
             <h2>Популярные игры</h2>
             <div class="games-grid">
                 <?php foreach ($popular as $game): ?>
-                    <div class="game-card">
+                    <a href="./pages/game.php?id=<?= $game['id'] ?>" class="game-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
                         <div class="game-cover">
-                            <img src="<?= htmlspecialchars($game['image_url']) ?>" alt="<?= htmlspecialchars($game['title']) ?>">
+                            <!-- Выводим картинку через get_image.php -->
+                            <img src="./pages/get_image.php?id=<?= $game['id'] ?>" alt="<?= htmlspecialchars($game['title'] ?? '') ?>">
                         </div>
                         <div class="game-body">
-                            <h3><?= htmlspecialchars($game['title']) ?></h3>
-                            <p><?= htmlspecialchars($game['description']) ?></p>
+                            <h3><?= htmlspecialchars($game['title'] ?? '') ?></h3>
+                            <p><?= htmlspecialchars($game['description'] ?? '') ?></p>
                         </div>
-                    </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
         </section>
