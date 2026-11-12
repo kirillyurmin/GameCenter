@@ -21,8 +21,8 @@ $games = $stmt->fetchAll();
             <ul>
                 <li><a href="../index.php">Главная</a></li>
                 <li><a href="./catalog.php">Каталог</a></li>
-                <li><a href="./login.html">Войти</a></li>
-                <li><a href="./register.html">Регистрация</a></li>
+                <li><a href="./login.php">Войти</a></li>
+                <li><a href="./register.php">Регистрация</a></li>
             </ul>
         </nav>
     </header>
