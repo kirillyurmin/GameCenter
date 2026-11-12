@@ -21,23 +21,13 @@ $popular = $stmtPop->fetchAll();
 <body>
     <header>
         <a href="index.php" class="logo">Game<span>Center</span></a>
-        <nav>
-    <ul>
-        <li><a href="index.php">Главная</a></li>
-        <li><a href="./pages/catalog.php">Каталог</a></li>
-        
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <li><span style="color: #6c8cff; font-weight: bold;">Привет, <?= htmlspecialchars($_SESSION['user_name']) ?></span></li>
-            <?php if ($_SESSION['user_role'] === 'admin'): ?>
-                <li><a href="./pages/admin.php" style="color: red;">Админка</a></li>
-            <?php endif; ?>
-            <li><a href="./pages/logout.php">Выйти</a></li>
-        <?php else: ?>
-            <li><a href="./pages/login.php">Войти</a></li>
-            <li><a href="./pages/register.php">Регистрация</a></li>
-        <?php endif; ?>
-    </ul>
-</nav>
+        <nav> 
+            <ul>
+                <li><a href="index.php">Главная</a></li>
+                <li><a href="./pages/catalog.php">Каталог</a></li>
+                <li><a href="./pages/profile.php">Профиль</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <section class="welcome">

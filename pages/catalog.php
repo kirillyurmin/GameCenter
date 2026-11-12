@@ -1,6 +1,7 @@
 <?php
 // Подключаем базу данных
 require_once '../db.php';
+require_once '../auth.php';
 
 // Делаем запрос к БД
 $stmt = $pdo->query("SELECT games.*, genres.name AS genre_name FROM games LEFT JOIN genres ON games.genre_id = genres.id");
@@ -21,8 +22,7 @@ $games = $stmt->fetchAll();
             <ul>
                 <li><a href="../index.php">Главная</a></li>
                 <li><a href="./catalog.php">Каталог</a></li>
-                <li><a href="./login.php">Войти</a></li>
-                <li><a href="./register.php">Регистрация</a></li>
+                <li><a href="./profile.php">Профиль</a></li>
             </ul>
         </nav>
     </header>
@@ -54,9 +54,11 @@ $games = $stmt->fetchAll();
         </section>
 
         <!-- Кнопка добавления игры внизу каталога -->
-        <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
-            <a href="add_game.php" class="btn-welcome" style="padding: 12px 28px; font-size: 16px; display: inline-block;">+ Добавить игру</a>
-        </div>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+                <a href="./add_game.php" class="btn-welcome" style="padding: 12px 28px; font-size: 16px; display: inline-block;">+ Добавить игру</a>
+            </div>
+        <?php endif; ?>
 
     </main>
     

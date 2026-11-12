@@ -1,5 +1,7 @@
 <?php
 require_once '../db.php';
+require_once '../auth.php';
+require_login();
 
 // Получаем ID игры из GET-запроса
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
