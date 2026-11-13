@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <ul>
                 <li><a href="../index.php">Главная</a></li>
                 <li><a href="catalog.php">Каталог</a></li>
+                <li><a href="profile.php">Профиль</a></li>
             </ul>
         </nav>
     </header>

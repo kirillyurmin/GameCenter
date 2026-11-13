@@ -23,7 +23,7 @@ $popular = $stmtPop->fetchAll();
         <a href="index.php" class="logo">Game<span>Center</span></a>
         <nav> 
             <ul>
-                <li><a href="index.php">Главная</a></li>
+                <li><a href="index.php" class="active">Главная</a></li>
                 <li><a href="./pages/catalog.php">Каталог</a></li>
                 <li><a href="./pages/profile.php">Профиль</a></li>
             </ul>
